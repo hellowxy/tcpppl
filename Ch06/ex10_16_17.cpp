@@ -188,7 +188,7 @@ namespace luke
 
 int main()
 {
-    /*char sz[] = "just for test";
+    char sz[] = "just for test";
     char sz1[] = " another string";
     char sz2[] = "just for";
     cout << luke::strlen(sz) << endl;
@@ -196,8 +196,8 @@ int main()
     char* p = luke::cat(sz, sz1);
     cout << p << endl;
     luke::rev(p);
-    cout << p << endl;*/
-/*
+    cout << p << endl;
+
     char sz3[] = "100";
     cout << luke::atoi(sz3) << endl;
     char sz4[] = "-100";
@@ -205,14 +205,14 @@ int main()
     char sz5[] = "    +100";
     cout << luke::atoi(sz5) << endl;
     char sz6[] = "    -100a";
-    cout << luke::atoi(sz6) << endl;*/
-/*
+    cout << luke::atoi(sz6) << endl;
+
     char sz7[] = "    -08";
     char sz8[] = "  -0xfff";
     cout << luke::atoi(sz7) << endl;
     cout << luke::atoi(sz8) << endl;
     string s("0x1a");
-    cout << luke::atoi(s) << endl;*/
+    cout << luke::atoi(s) << endl;
 
     char sz9[255] = {0};
     luke::itoa(123, sz9);
