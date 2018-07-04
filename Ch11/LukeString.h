@@ -6,8 +6,11 @@ using std::strcpy;
 using std::ostream;
 using std::istream;
 using std::strcmp;
+
 class LukeString
-{
+{   
+    class Range{};      
+
     private:
       
         struct Srep
@@ -53,15 +56,17 @@ class LukeString
                 Srep& operator=(const Srep&);
         };
         Srep *rep;        
-    public:
-      
+    public:      
+        class Cref;
         LukeString();
         LukeString(const char*);
         LukeString(const LukeString&);
         LukeString& operator=(const char*);
         LukeString& operator=(const LukeString&);
+    
+        
         ~LukeString();
-
+        
         void check(int i) const
         {
             if(i < 0 || rep->sz <= i)
@@ -81,8 +86,7 @@ class LukeString
         char operator[](int i) const{check(i); return rep->s[i];}
 
         int size() const{return rep->sz;}
-        class Cref;
-        class Range{};        
+         
         Cref operator[](int i);
 
         LukeString& operator+=(const LukeString& ls);
@@ -110,6 +114,7 @@ class LukeString
         {
             return !(x == y);
         }
+        friend class LukeStringIterator;
 };
 
 LukeString operator+(const LukeString&, const LukeString&);
@@ -118,12 +123,13 @@ LukeString operator+(const LukeString&, const char*);
 class LukeString::Cref
 {
     friend class LukeString;
-    LukeString& s;
-    int i;
-    Cref(LukeString& ls, int ii):s(ls), i(ii){}
+    friend class LukeStringIterator;
+    private:
+        LukeString& s;
+        int i;
+        Cref(LukeString& ls, int ii):s(ls), i(ii){}
     public:
         operator char() const{return s.read(i);}
         void operator=(char c){s.write(i, c);}
 };
-
 #endif

@@ -1,5 +1,6 @@
 #include"LukeString.h"
 #include<iostream>
+#include"LukeStringIterator.h"
 using std::cout;
 using std::cin;
 using std::endl;
@@ -33,16 +34,20 @@ int main()
     {
         cout << "write failed" << endl;
     }
-    cout << "exit: " << x << ' ' << y << ' ' << z << endl;
-    cout << "========================================================" << endl;
+    cout << "exit: " << x << ' ' << y << ' ' << z << endl;   
     x = "hello";
     y = "world";
     z = x + y;
     cout << z << endl;
     z += "!!!";
     cout << z << endl;
-
-
-
+    cout << "========================================================" << endl;
+    LukeStringIterator lsIterator(z);
+    while(!lsIterator.is_past_end())
+    {
+        cout << lsIterator.get();
+        lsIterator.next();
+    }
+    cout << endl;
     return 0;
 }

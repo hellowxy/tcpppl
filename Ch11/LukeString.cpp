@@ -136,4 +136,3 @@ LukeString::Cref LukeString::operator[](int i)
     check(i);
     return Cref(*this, i);
 }
-
